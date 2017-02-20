@@ -12,7 +12,6 @@ import android.graphics.Bitmap;
 import android.graphics.PixelFormat;
 import android.os.Bundle;
 import android.text.Editable;
-import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -299,23 +298,15 @@ public class AddGroupChatActivity extends BaseActivity implements
 			final CheckBox checkBox = ViewHolder
 					.get(convertView, R.id.checkbox);
 			checkBox.setVisibility(View.VISIBLE);
-			String catalog = "";
-			if (TextUtils.isEmpty(user.getUserName()))
-				catalog = "#";
-			else
-				catalog = PingYinUtil.converterToFirstSpell(user.getUserName())
-						.substring(0, 1);
+			String catalog = PingYinUtil.converterToFirstSpell(
+					user.getUserName()).substring(0, 1);
 			if (position == 0) {
 				tvCatalog.setVisibility(View.VISIBLE);
 				tvCatalog.setText(catalog);
 			} else {
-				String lastCatalog = "";
 				User Nextuser = list.get(position - 1);
-				if (TextUtils.isEmpty(Nextuser.getUserName()))
-					lastCatalog = "#";
-				else
-					lastCatalog = PingYinUtil.converterToFirstSpell(
-							Nextuser.getUserName()).substring(0, 1);
+				String lastCatalog = PingYinUtil.converterToFirstSpell(
+						Nextuser.getUserName()).substring(0, 1);
 				if (catalog.equals(lastCatalog)) {
 					tvCatalog.setVisibility(View.GONE);
 				} else {
@@ -334,8 +325,6 @@ public class AddGroupChatActivity extends BaseActivity implements
 			if (addList != null && addList.contains(user.getTelephone())) {
 				checkBox.setChecked(true);
 				isCheckedArray[position] = true;
-			}else {
-				checkBox.setChecked(false);
 			}
 			if (checkBox != null) {
 				checkBox.setOnCheckedChangeListener(new OnCheckedChangeListener() {
@@ -346,8 +335,6 @@ public class AddGroupChatActivity extends BaseActivity implements
 						if (exitingMembers.contains(user.getTelephone())) {
 							isChecked = true;
 							checkBox.setChecked(true);
-						}else {
-							checkBox.setChecked(false);
 						}
 						isCheckedArray[position] = isChecked;
 						// 如果是单选模式
@@ -385,13 +372,10 @@ public class AddGroupChatActivity extends BaseActivity implements
 		public int getPositionForSection(int section) {
 			for (int i = 0; i < list.size(); i++) {
 				User user = list.get(i);
-				String catalog = "";
-				if (TextUtils.isEmpty(user.getUserName()))
-					catalog = "#";
-				else
-					catalog = PingYinUtil.converterToFirstSpell(
-							user.getUserName()).substring(0, 1);
-				char firstChar = catalog.toUpperCase().charAt(0);
+				String l = PingYinUtil
+						.converterToFirstSpell(user.getUserName()).substring(0,
+								1);
+				char firstChar = l.toUpperCase().charAt(0);
 				if (firstChar == section) {
 					return i;
 				}

@@ -14,9 +14,7 @@ import com.juns.wechat.Constants;
 import com.juns.wechat.R;
 import com.juns.wechat.common.Utils;
 import com.juns.wechat.view.activity.AlbumActivity;
-import com.juns.wechat.view.activity.LoginActivity;
 import com.juns.wechat.view.activity.PublicActivity;
-import com.juns.wechat.view.activity.WebViewActivity;
 import com.juns.wechat.zxing.CaptureActivity;
 
 public class Fragment_Dicover extends Fragment implements OnClickListener {
@@ -86,16 +84,12 @@ public class Fragment_Dicover extends Fragment implements OnClickListener {
 					new BasicNameValuePair(Constants.NAME, getString(R.string.drift_bottle)));
 			break;
 		case R.id.txt_shop:
-			Utils.start_Activity(getActivity(), WebViewActivity.class,
-					new BasicNameValuePair(Constants.Title,getString(R.string.shopping)),
-					new BasicNameValuePair(Constants.URL,
-							"http://wq.jd.com/mcoss/mportal/show?tabid=13&tpl=13&ptag=17007.7.1&ptype=1"));
+			Utils.start_Activity(getActivity(), PublicActivity.class,
+					new BasicNameValuePair(Constants.NAME, getString(R.string.shopping)));
 			break;
 		case R.id.txt_game:
-			Utils.start_Activity(getActivity(), WebViewActivity.class,
-					new BasicNameValuePair(Constants.Title,getString(R.string.games)),
-					new BasicNameValuePair(Constants.URL,
-							"http://game.m.mofang.com/"));
+			Utils.start_Activity(getActivity(), PublicActivity.class,
+					new BasicNameValuePair(Constants.NAME, getString(R.string.games)));
 			break;
 		default:
 			break;
